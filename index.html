@@ -198,17 +198,17 @@ ul li::before { content: "•"; position: absolute; left: 0; color: #0077cc; fon
        <!--  <img src="https://raw.githubusercontent.com/alemi77/renault_xmod/main/fiancata_anteriore.jpeg" alt="Fiancata anteriore"> -->
     </div>
     <div class="carousel-buttons" id="carousel-main-buttons">
-        <button onclick="prevSlide()"><i class="fas fa-chevron-left"></i></button>
-        <button onclick="nextSlide()"><i class="fas fa-chevron-right"></i></button>
+        <button onclick="prevSlideMain()"><i class="fas fa-chevron-left"></i></button>
+        <button onclick="nextSlideMain()"><i class="fas fa-chevron-right"></i></button>
     </div>
   
 
 <!-- Puntini di navigazione -->
 <div class="carousel-dots" id="carousel-main-dots">
-    <span class="dot" onclick="goToSlide(0)"></span>
-    <span class="dot" onclick="goToSlide(1)"></span>
-   <!--  <span class="dot" onclick="goToSlide(2)"></span> -->
-   <!-- <span class="dot" onclick="goToSlide(3)"></span> -->
+    <span class="dot" onclick="goToSlideMain(0)"></span>
+    <span class="dot" onclick="goToSlideMain(1)"></span>
+   <!--  <span class="dot" onclick="goToSlideMain(2)"></span> -->
+   <!-- <span class="dot" onclick="goToSlideMain(3)"></span> -->
 </div>
 
     <!-- Informazioni principali -->
@@ -341,7 +341,7 @@ const modal = document.getElementById("modal");
 const modalImg = document.getElementById("modal-img");
 
 // Evento click su immagini carousel
-slides.forEach(slide => {
+slidesMain.forEach(slide => {
     slide.addEventListener("click", function() {
         modal.style.display = "block";
         modalImg.src = this.src;
@@ -392,6 +392,7 @@ slidesDanni.forEach(slide => {
 
 </body>
 </html>
+
 
 
 
