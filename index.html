@@ -291,11 +291,7 @@ ul li::before { content: "•"; position: absolute; left: 0; color: #0077cc; fon
     </ul>
 
 </div>
-        <!-- Modale per anteprima immagini -->
-<div id="modal" class="modal">
-    <span class="close" onclick="closeModal()">&times;</span>
-    <img class="modal-content" id="modal-img">
-</div>
+
 
     <h2><i class="fas fa-exclamation-triangle"></i> Danneggiamenti e segni estetici</h2>
 
@@ -305,15 +301,21 @@ ul li::before { content: "•"; position: absolute; left: 0; color: #0077cc; fon
 </div>
 
 <div class="carousel-buttons" id="carousel-danni-buttons">
-    <button onclick="prevSlideDanni()">⟨</button>
-    <button onclick="nextSlideDanni()">⟩</button>
+    <button onclick="prevSlide()"><i class="fas fa-chevron-left"></i></button>
+    <button onclick="nextSlide()"><i class="fas fa-chevron-right"></i></button>
 </div>
 
 <div class="carousel-dots" id="carousel-danni-dots">
     <span class="dot" onclick="goToSlideDanni(0)"></span>
     <span class="dot" onclick="goToSlideDanni(1)"></span>
+    
 </div>
 
+    <!-- Modale per anteprima immagini -->
+<div id="modal" class="modal">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <img class="modal-content" id="modal-img">
+</div>
 <script>
 // Primo carosello
 let currentSlideMain = 0;
@@ -390,6 +392,7 @@ slidesDanni.forEach(slide => {
 
 </body>
 </html>
+
 
 
 
