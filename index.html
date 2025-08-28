@@ -116,6 +116,26 @@ ul li::before { content: "•"; position: absolute; left: 0; color: #0077cc; fon
 }
 .carousel-buttons button:hover { background: rgba(0,119,204,1); transform: scale(1.1); }
 
+.carousel-dots {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.carousel-dots .dot {
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    margin: 0 6px;
+    background-color: #ccc;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.carousel-dots .dot.active {
+    background-color: #0077cc;
+}
+
 /* Responsive */
 @media (max-width: 768px) {
     .carousel { width: 95%; }
@@ -144,6 +164,18 @@ ul li::before { content: "•"; position: absolute; left: 0; color: #0077cc; fon
         <button onclick="prevSlide()"><i class="fas fa-chevron-left"></i></button>
         <button onclick="nextSlide()"><i class="fas fa-chevron-right"></i></button>
     </div>
+    <div class="carousel-buttons">
+    <button onclick="prevSlide()">⟨</button>
+    <button onclick="nextSlide()">⟩</button>
+</div>
+
+<!-- Puntini di navigazione -->
+<div class="carousel-dots">
+    <span class="dot" onclick="goToSlide(0)"></span>
+    <span class="dot" onclick="goToSlide(1)"></span>
+    <span class="dot" onclick="goToSlide(2)"></span>
+    <span class="dot" onclick="goToSlide(3)"></span>
+</div>
 
     <!-- Informazioni principali -->
     <h2><i class="fas fa-info-circle"></i> Informazioni principali</h2>
@@ -229,27 +261,37 @@ ul li::before { content: "•"; position: absolute; left: 0; color: #0077cc; fon
 <script>
 let currentSlide = 0;
 const slides = document.querySelectorAll('.carousel img');
+const dots = document.querySelectorAll('.carousel-dots .dot');
 
 function showSlide(index){
     slides.forEach((s,i)=>s.classList.remove('active'));
+    dots.forEach((d,i)=>d.classList.remove('active'));
     slides[index].classList.add('active');
+    dots[index].classList.add('active');
+    currentSlide = index;
 }
 
 function nextSlide(){
-    currentSlide = (currentSlide + 1) % slides.length;
-    showSlide(currentSlide);
+    showSlide((currentSlide + 1) % slides.length);
 }
 
 function prevSlide(){
-    currentSlide = (currentSlide - 1 + slides.length) % slides.length;
-    showSlide(currentSlide);
+    showSlide((currentSlide - 1 + slides.length) % slides.length);
+}
+
+// Funzione per puntini cliccabili
+function goToSlide(index){
+    showSlide(index);
 }
 
 // Slideshow automatico ogni 3 secondi
 setInterval(nextSlide, 3000);
-}
+
+// Inizializza il primo puntino attivo
+showSlide(0);
 </script>
 
 </body>
 </html>
+
 
