@@ -297,6 +297,23 @@ ul li::before { content: "•"; position: absolute; left: 0; color: #0077cc; fon
     <img class="modal-content" id="modal-img">
 </div>
 
+    <h2><i class="fas fa-exclamation-triangle"></i> Danneggiamenti e segni estetici</h2>
+
+<div class="carousel" id="carousel-danni">
+    <img src="https://raw.githubusercontent.com/alemi77/renault_xmod/main/fiancata_posteriore.jpeg" class="active" alt="Fiancata posteriore">
+    <img src="https://raw.githubusercontent.com/alemi77/renault_xmod/main/fiancata_anteriore.jpeg" alt="Fiancata anteriore">
+</div>
+
+<div class="carousel-buttons" id="carousel-danni-buttons">
+    <button onclick="prevSlideDanni()">⟨</button>
+    <button onclick="nextSlideDanni()">⟩</button>
+</div>
+
+<div class="carousel-dots" id="carousel-danni-dots">
+    <span class="dot" onclick="goToSlideDanni(0)"></span>
+    <span class="dot" onclick="goToSlideDanni(1)"></span>
+</div>
+
 <script>
 let currentSlide = 0;
 const slides = document.querySelectorAll('.carousel img');
@@ -350,12 +367,42 @@ function closeModal() {
 modal.addEventListener("click", function(e) {
     if(e.target === modal) closeModal();
 });
+
+
+// Secondo carosello - danni
+let currentSlideDanni = 0;
+const slidesDanni = document.querySelectorAll('#carousel-danni img');
+const dotsDanni = document.querySelectorAll('#carousel-danni-dots .dot');
+
+function showSlideDanni(index){
+    slidesDanni.forEach((s,i)=>s.classList.remove('active'));
+    dotsDanni.forEach((d,i)=>d.classList.remove('active'));
+    slidesDanni[index].classList.add('active');
+    dotsDanni[index].classList.add('active');
+    currentSlideDanni = index;
+}
+
+function nextSlideDanni(){ showSlideDanni((currentSlideDanni + 1) % slidesDanni.length); }
+function prevSlideDanni(){ showSlideDanni((currentSlideDanni - 1 + slidesDanni.length) % slidesDanni.length); }
+function goToSlideDanni(index){ showSlideDanni(index); }
+
+setInterval(nextSlideDanni, 4000);
+showSlideDanni(0);
+
+// Modale: funziona anche con le nuove immagini
+slidesDanni.forEach(slide => {
+    slide.addEventListener("click", function() {
+        modal.style.display = "block";
+        modalImg.src = this.src;
+    });
+});
 </script>
 
 
 
 </body>
 </html>
+
 
 
 
