@@ -291,6 +291,11 @@ ul li::before { content: "•"; position: absolute; left: 0; color: #0077cc; fon
     </ul>
 
 </div>
+        <!-- Modale per anteprima immagini -->
+<div id="modal" class="modal">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <img class="modal-content" id="modal-img">
+</div>
 
 <script>
 let currentSlide = 0;
@@ -323,8 +328,7 @@ setInterval(nextSlide, 3000);
 
 // Inizializza il primo puntino attivo
 showSlide(0);
-</script>
-    <script>
+
 // Modale per anteprima immagini
 const modal = document.getElementById("modal");
 const modalImg = document.getElementById("modal-img");
@@ -348,14 +352,11 @@ modal.addEventListener("click", function(e) {
 });
 </script>
 
-    <!-- Modale per anteprima immagini -->
-<div id="modal" class="modal">
-    <span class="close" onclick="closeModal()">&times;</span>
-    <img class="modal-content" id="modal-img">
-</div>
+
 
 </body>
 </html>
+
 
 
 
