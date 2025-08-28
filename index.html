@@ -315,36 +315,24 @@ ul li::before { content: "•"; position: absolute; left: 0; color: #0077cc; fon
 </div>
 
 <script>
-let currentSlide = 0;
-const slides = document.querySelectorAll('.carousel img');
-const dots = document.querySelectorAll('.carousel-dots .dot');
+// Primo carosello
+let currentSlideMain = 0;
+const carouselMain = document.getElementById('carousel-main');
+const slidesMain = carouselMain.querySelectorAll('img');
+const dotsMain = document.getElementById('carousel-main-dots').querySelectorAll('.dot');
 
-function showSlide(index){
-    slides.forEach((s,i)=>s.classList.remove('active'));
-    dots.forEach((d,i)=>d.classList.remove('active'));
-    slides[index].classList.add('active');
-    dots[index].classList.add('active');
-    currentSlide = index;
+function showSlideMain(index){
+    slidesMain.forEach((s,i)=>s.classList.remove('active'));
+    dotsMain.forEach((d,i)=>d.classList.remove('active'));
+    slidesMain[index].classList.add('active');
+    dotsMain[index].classList.add('active');
+    currentSlideMain = index;
 }
-
-function nextSlide(){
-    showSlide((currentSlide + 1) % slides.length);
-}
-
-function prevSlide(){
-    showSlide((currentSlide - 1 + slides.length) % slides.length);
-}
-
-// Funzione per puntini cliccabili
-function goToSlide(index){
-    showSlide(index);
-}
-
-// Slideshow automatico ogni 3 secondi
-setInterval(nextSlide, 6000);
-
-// Inizializza il primo puntino attivo
-showSlide(0);
+function nextSlideMain(){ showSlideMain((currentSlideMain + 1) % slidesMain.length); }
+function prevSlideMain(){ showSlideMain((currentSlideMain - 1 + slidesMain.length) % slidesMain.length); }
+function goToSlideMain(index){ showSlideMain(index); }
+setInterval(nextSlideMain, 6000);
+showSlideMain(0);
 
 // Modale per anteprima immagini
 const modal = document.getElementById("modal");
@@ -402,6 +390,7 @@ slidesDanni.forEach(slide => {
 
 </body>
 </html>
+
 
 
 
