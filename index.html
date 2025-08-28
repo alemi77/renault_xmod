@@ -90,15 +90,22 @@ ul li::before { content: "•"; position: absolute; left: 0; color: #0077cc; fon
     border-radius: 15px;
     overflow: hidden;
     box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    height: 450px; /* fissa altezza per effetto dissolvenza */
 }
 .carousel img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    display: none;
-    transition: opacity 0.5s ease-in-out;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
 }
-.carousel img.active { display: block; }
+.carousel img.active {
+    opacity: 1;
+    position: relative; /* mantiene l'immagine attiva nello stack */
+}
 
 .carousel-buttons { text-align: center; margin-top: 10px; }
 .carousel-buttons button {
@@ -227,15 +234,22 @@ function showSlide(index){
     slides.forEach((s,i)=>s.classList.remove('active'));
     slides[index].classList.add('active');
 }
+
 function nextSlide(){
-    currentSlide = (currentSlide+1) % slides.length;
+    currentSlide = (currentSlide + 1) % slides.length;
     showSlide(currentSlide);
 }
+
 function prevSlide(){
-    currentSlide = (currentSlide-1+slides.length) % slides.length;
+    currentSlide = (currentSlide - 1 + slides.length) % slides.length;
     showSlide(currentSlide);
+}
+
+// Slideshow automatico ogni 3 secondi
+setInterval(nextSlide, 3000);
 }
 </script>
 
 </body>
 </html>
+
