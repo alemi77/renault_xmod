@@ -93,15 +93,15 @@ ul li::before { content: "•"; position: absolute; left: 0; color: #0077cc; fon
     height: 450px; /* fissa altezza per effetto dissolvenza */
 }
 .carousel img {
-    width: 80%;
-    height: 80%;
-    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* mostra l'immagine intera */
+    background-color: #f0f4f8; /* colore di sfondo nei bordi */
     position: absolute;
     top: 0;
     left: 0;
     opacity: 0;
     transition: opacity 1s ease-in-out;
-}
 .carousel img.active {
     opacity: 1;
     position: relative; /* mantiene l'immagine attiva nello stack */
@@ -421,6 +421,7 @@ slidesDanni.forEach(slide => {
 
 </body>
 </html>
+
 
 
 
