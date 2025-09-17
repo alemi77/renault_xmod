@@ -349,7 +349,7 @@ ul li::before { content: "•"; position: absolute; left: 0; color: #0077cc; fon
     <img class="modal-content" id="modal-img">
 </div>
 <script>
-// Primo carosello
+// ---------- Primo carosello (principale) ----------
 let currentSlideMain = 0;
 const carouselMain = document.getElementById('carousel-main');
 const slidesMain = carouselMain.querySelectorAll('img');
@@ -362,36 +362,15 @@ function showSlideMain(index){
     dotsMain[index].classList.add('active');
     currentSlideMain = index;
 }
+
 function nextSlideMain(){ showSlideMain((currentSlideMain + 1) % slidesMain.length); }
 function prevSlideMain(){ showSlideMain((currentSlideMain - 1 + slidesMain.length) % slidesMain.length); }
 function goToSlideMain(index){ showSlideMain(index); }
+
 setInterval(nextSlideMain, 6000);
 showSlideMain(0);
 
-// Modale per anteprima immagini
-const modal = document.getElementById("modal");
-const modalImg = document.getElementById("modal-img");
-
-// Evento click su immagini carousel
-slidesMain.forEach(slide => {
-    slide.addEventListener("click", function() {
-        modal.style.display = "block";
-        modalImg.src = this.src;
-    });
-});
-
-// Chiudi modale
-function closeModal() {
-    modal.style.display = "none";
-}
-
-// Chiudi cliccando fuori dall'immagine
-modal.addEventListener("click", function(e) {
-    if(e.target === modal) closeModal();
-});
-
-
-// Secondo carosello - danni
+// ---------- Secondo carosello (danni) ----------
 let currentSlideDanni = 0;
 const slidesDanni = document.querySelectorAll('#carousel-danni img');
 const dotsDanni = document.querySelectorAll('#carousel-danni-dots .dot');
@@ -411,42 +390,28 @@ function goToSlideDanni(index){ showSlideDanni(index); }
 setInterval(nextSlideDanni, 6000);
 showSlideDanni(0);
 
-// Modale: funziona anche con le nuove immagini
-slidesDanni.forEach(slide => {
+// ---------- Modale unica per tutte le immagini ----------
+const modal = document.getElementById("modal");
+const modalImg = document.getElementById("modal-img");
+
+// Tutte le immagini dei caroselli aprono la modale
+document.querySelectorAll('.carousel img').forEach(slide => {
     slide.addEventListener("click", function() {
         modal.style.display = "block";
-        modalImg.src = this.src;
+        modalImg.src = this.src; // mostra l'immagine cliccata
     });
+});
+
+// Chiudi modale
+function closeModal() {
+    modal.style.display = "none";
+}
+
+// Chiudi cliccando fuori dall'immagine
+modal.addEventListener("click", function(e) {
+    if(e.target === modal) closeModal();
 });
 </script>
 
-
-
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
