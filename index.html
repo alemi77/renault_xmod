@@ -95,10 +95,9 @@ ul li::before { content: "•"; position: absolute; left: 0; color: #0077cc; fon
 .carousel img {
     width: 100%;
     height: 100%;
-    object-fit: contain; /* mostra l'immagine intera */
-    object-position: center; /* centra l'immagine */
-    background-color: #f0f4f8; /* colore di sfondo nei bordi */
-    position: absolute;
+    object-fit: contain;
+    background-color: #f0f4f8;
+    position: absolute; /* tutte le immagini */
     top: 0;
     left: 0;
     opacity: 0;
@@ -107,7 +106,7 @@ ul li::before { content: "•"; position: absolute; left: 0; color: #0077cc; fon
 
 .carousel img.active {
     opacity: 1;
-    position: relative; /* mantiene l'immagine attiva nello stack */
+    z-index: 1; /* metti l'immagine attiva sopra le altre */
 }
 
 .carousel-buttons { text-align: center; margin-top: 10px; }
@@ -415,4 +414,5 @@ modal.addEventListener("click", function(e) {
 
 </body>
 </html>
+
 
